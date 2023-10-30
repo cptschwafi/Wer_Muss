@@ -9,14 +9,12 @@ const SadFace = document.getElementById("Sad__Face");
 
 /* since the Golden Arrow is in a 90 deg Angle to the top of the Wheel we have to define an offset for further calculations*/ 
 const RotationOffset =90;
-
-/*Object that stores values of minimum and maximum angle which is related to one Field*/
+/*Object that stores start and End degree Value of every Field of the Wheel*/
 let rotationValues = [];
-/* Size of one Field of the Wheel in Degrees */
-let FieldSize = 0;
 /* List of Participants*/
 let Participants = []
-
+/* Size of one Field of the Wheel in Degrees */
+let FieldSize = 0;
 /*Fields of the Wheel*/
 let Fields = [];
 /*background color for each piece*/
@@ -28,13 +26,13 @@ let myChart = {};
 const App = Vue.createApp({
   data(){
     return {
-      isMounted:0,
       ParticipantInput:'',
       ErrorMsg:'',
       participants:[]
     }
   },
   methods:{
+    /*Method to Add Participant to the Game */
     AddParticipant(){
       if(this.participants.length<10)
       {
@@ -58,6 +56,7 @@ const App = Vue.createApp({
         this.ErrorMsg= "Maximale Anzahl an Spielern erreicht"
       }
     },
+    /*Method to Remove Participant from the Game */
     RemoveParticipant(participant){
       this.ErrorMsg= "";
       this.participants.splice(this.participants.indexOf(participant), 1);
