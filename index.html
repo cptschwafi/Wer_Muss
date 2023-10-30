@@ -23,6 +23,7 @@
             <button @click="AddParticipant()" class="Add__Remove__Btn"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
           </div>
         </div>
+        <button v-if="participants.length >1" @click="StartGame()" class="Gold__Btn Start__Btn" id="Start__Btn">Lets Go!</button>
         <div class="Participants__Container">
           <h2 v-if="participants.length >0">Teilnehmer</h2>
           <ul id="Participant__Ul" class="Participant__List">
@@ -32,7 +33,6 @@
             </li>
           </ul>
         </div>
-        <button v-if="participants.length >1" @click="StartGame()" class="Gold__Btn Start__Btn" id="Start__Btn">Lets Go!</button>
       </div>
       <div class="Game__Container" id="Game__Container">
         <svg class="Close__Icon" id="Close__Icon" width="32" height="31" xmlns="http://www.w3.org/2000/svg"><g fill="#00001A" fill-rule="evenodd"><path d="m2.919.297 28.284 28.284-2.122 2.122L.797 2.419z"/><path d="M.797 28.581 29.081.297l2.122 2.122L2.919 30.703z"/></g></svg>
@@ -43,8 +43,6 @@
         </div>
         <button id="Spin__Btn" class="Gold__Btn">Dreh das Rad</button>
         <div id="Text__Output">
-        </div>
-        <div class="Output__Container">
         </div>
       </div>
     </main>

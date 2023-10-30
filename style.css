@@ -138,7 +138,7 @@ h1:after {
   padding: 4rem;
   max-width: 40rem;
   display: grid;
-  row-gap: 3rem;
+  row-gap: 3.5rem;
 }
 .Input__Container h2 {
   text-transform: uppercase;
@@ -232,13 +232,9 @@ h1:after {
   color: white;
   border-radius: 1rem;
   text-transform: uppercase;
-  margin-top: 2rem;
 }
 
 /*---------------------------NAME OUTPUT---------------------------------*/
-.Output__Container{
-   
-}
 .Sad__Face__Img{
   position: absolute;
   top:50%;
@@ -306,6 +302,9 @@ h1:after {
 
 .Gold__Btn:hover{
   box-shadow: 0 0 25px #cfc09f;
+}
+#Spin__Btn{
+  margin-top: 2rem;
 }
 
 #Text__Output{
