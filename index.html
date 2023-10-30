@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/sad_face.jpeg">
+  <title>Wer Muss? | Decision finder app</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="Page__Container">
+    <header>
+      <h1>Wer Muss?</h1>
+    </header>
+    <main>
+      <div  class="Input__Container" id="Input__Container">
+        <div class="Name__Inputs">
+          <h2>Namen hinzufügen</h2>
+          <div class="Name__Input__Element">
+            <input  v-model="ParticipantInput"  type="text" name="" id="Participant__Input" required @keyup.enter="AddParticipant()" >
+            <span class="Input__Error__Msg"> {{ErrorMsg}}</span>
+            <button @click="AddParticipant()" class="Add__Remove__Btn"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="Participants__Container">
+          <h2 v-if="participants.length >0">Teilnehmer</h2>
+          <ul id="Participant__Ul" class="Participant__List">
+            <li v-for="participant in participants">
+              <span>{{participant.name }}</span>
+              <button @click="RemoveParticipant(participant)" class="Add__Remove__Btn"><i class="fa fa-minus-square" aria-hidden="true"></i></button>
+            </li>
+          </ul>
+        </div>
+        <button v-if="participants.length >1" @click="StartGame()" class="Gold__Btn Start__Btn" id="Start__Btn">Lets Go!</button>
+      </div>
+      <div class="Game__Container" id="Game__Container">
+        <svg class="Close__Icon" id="Close__Icon" width="32" height="31" xmlns="http://www.w3.org/2000/svg"><g fill="#00001A" fill-rule="evenodd"><path d="m2.919.297 28.284 28.284-2.122 2.122L.797 2.419z"/><path d="M.797 28.581 29.081.297l2.122 2.122L2.919 30.703z"/></g></svg>
+        <div class="Wheel__Container">
+          <canvas id="Wheel"></canvas>
+          <img class="Golden__Arrow" id="Golden__Arrow" src="images/golden_arrow.png" alt="Golden-arrow" />
+          <img class="Sad__Face__Img" id="Sad__Face"src="images/sad_face.jpeg" alt="">
+        </div>
+        <button id="Spin__Btn" class="Gold__Btn">Dreh das Rad</button>
+        <div id="Text__Output">
+        </div>
+        <div class="Output__Container">
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <div class="attribution">
+      Coded by <a href="https://github.com/cptschwafi">Andreas Schwarzfischer</a>.
+    </div>
+    <div class="Icon__Credits">
+      <a href='https://pngtree.com/freepng/single-golden-arrow-clipart-for-decoration-free-png-and-psd_7263037.html'>Arrow png image from pngtree.com/</a>
+    </div>
+  </footer>
+  <!-- VUE JS -->
+  <script src="https://unpkg.com/vue@3"></script>
+  <!-- Chart JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <!-- Chart JS Plugin for displaying text over chart -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

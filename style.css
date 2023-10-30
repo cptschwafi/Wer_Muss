@@ -1,0 +1,366 @@
+/*----------Custom Fonts-------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=Space+Grotesk:wght@500&display=swap');
+
+
+/*----------Custom Colors-------------*/
+
+:root {
+    --ff-regular: 'Manrope', sans-serif;
+    --fs-quote: 28px;
+    --fw-regular: 800;
+    --gold-gradient-1: linear-gradient(to bottom, #cfc09f 22%,#634f2c 100%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 100%); 
+    --gold-gradient-2:linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%); 
+}
+/*-----CSS Reset------*/
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    5. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    6. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    7. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    7. no arrows on Number Inputs
+  */  
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+        appearance: textfield;
+    -moz-appearance: textfield;
+    }
+
+/*-----------------------------------------------------------*/
+/*--------------------Custom Styles -------------------------*/
+/*-----------------------------------------------------------*/
+
+/*Utility Classes*/
+
+.error{
+  border: 1px solid red;
+}
+/*---------------------------BODY AND PAGE---------------------------------*/
+body {
+  min-height: 100vh;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  font-family: var(--ff-regular);
+  font-weight: var(--fw-regular);
+}
+
+.Page__Container {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid goldenrod;
+  border-radius: 1rem;
+}
+
+
+/*---------------------------HEADER---------------------------------*/
+header h1 {
+  background: var(--gold-gradient-2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  text-transform: uppercase;	
+  font-size: 5rem;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+}
+@media(max-width: 773px)
+{
+  header h1 {
+    font-size: 3.5rem;
+  }
+}
+h1:after {
+  content: attr(data-heading);
+  left: 0;
+  top: 0;
+  z-index: -1;
+  position: absolute;
+  text-shadow: 
+  -1px 0 1px #c6bb9f, 
+  0 1px 1px #c6bb9f, 
+  5px 5px 10px rgba(0, 0, 0, 0.4),
+  -5px -5px 10px rgba(0, 0, 0, 0.4);
+}
+
+/*---------------------------NAME INPUTS---------------------------------*/
+.Input__Container{
+  padding: 4rem;
+  max-width: 40rem;
+  display: grid;
+  row-gap: 3rem;
+}
+.Input__Container h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.Name__Inputs{
+  display: grid;
+  row-gap: 1rem;
+
+}
+.Name__Input__Element{
+  box-shadow: -3px 6px 4px #222;
+  display: flex;
+  column-gap:2px;
+  position: relative;
+}
+.Name__Input__Element input{
+  height: 2.5rem;
+  outline: none;
+  width: 100%;
+}
+.Input__Error__Msg{
+  color: rgb(252, 68, 68);
+  position: absolute;
+  bottom:-0.5rem;
+  transform: translateY(100%);
+  font-size: 0.8rem;
+}
+
+.Add__Remove__Btn{
+  height: 100%;
+  width: 5rem;
+  border:none;
+  color: white;
+  text-shadow: 1px 1px 1px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 1px 1px 1px #000;
+  -webkit-text-shadow: 1px 1px 1px #000;
+  cursor: pointer;
+}
+.Name__Input__Element button{
+  background-color: rgb(0, 255, 98);
+}
+.Name__Input__Element button:hover{
+  background-color: rgb(0, 212, 81);
+}
+
+.Participants__Container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.Participants__Container button{
+  background-color: rgb(255, 0, 0);
+}
+.Participants__Container button:hover{
+  background-color: rgb(214, 0, 0);
+}
+
+.Participants__Container ul{
+  width: 100%;
+  padding: 0;
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Participants__Container li{
+  height: 2.5rem;
+  column-gap:2px;
+  display: flex;
+  border: 1px solid black;
+}
+.Participants__Container span{
+  background: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+#Start__Btn{
+  width: 100%;
+}
+.Gold__Btn{
+  width: 9rem;
+  height: 3rem;
+  background: var(--gold-gradient-1);
+  color: white;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/*---------------------------NAME OUTPUT---------------------------------*/
+.Output__Container{
+   
+}
+.Sad__Face__Img{
+  position: absolute;
+  top:50%;
+  width: 8rem;
+  border-radius: 5rem;
+  transform: translateY(-50%);
+  display: none;
+}
+
+
+/*-----------------------------GAME-------------------------------------*/
+
+.Close__Icon{
+  position: absolute;
+  top:0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  }
+
+.Close__Icon:hover{
+  cursor: pointer;
+}
+
+.Game__Container{
+  top:10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display:none;
+  max-width: 45rem;
+  width: 100%;
+  position: absolute;
+  height: fit-content;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 2rem 5rem 2rem 5rem;
+}
+.Wheel__Container{
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  display: flex;
+}
+#Wheel {
+  max-height: inherit;
+  width: inherit;
+  top: 0;
+  padding: 0;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.Golden__Arrow {
+  position: absolute;
+  width: 6em;
+  top: 50%;
+  right: 0%;
+  transform: rotate(-90deg) translateX(50%) translateY(90%);
+}
+
+.Gold__Btn:hover{
+  box-shadow: 0 0 25px #cfc09f;
+}
+
+#Text__Output{
+  font-size: 1.5em;
+  text-align: center;
+  color: #202020;
+  font-weight: 500;
+}
+
+/*--------------------Attribution-------------------------*/
+footer{
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+  min-height: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: var(--gold-gradient-1);
+  display: none;
+}
+.attribution { font-size: 1rem; text-align: center; }
+.attribution a { color:white}
+
+.Icon__Credits{
+  font-size: 10px;
+  color:white;
+}
+
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    font-size: 12px;
+  }
+  img {
+    right: -5%;
+  }
+  .Golden__Arrow{
+    width: 3rem;
+  }
+  .Close__Icon{
+    transform: scale(0.5);
+  }
+  .Game__Container{
+    padding: 1rem 3rem 1rem 3rem
+  }
+  .Page__Container{
+    padding:0;
+  }
+  .Participants__Container ul{
+    grid-template-columns: 1fr;
+  }
+}
+
+
