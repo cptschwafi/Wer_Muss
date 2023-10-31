@@ -74,7 +74,11 @@ const App = Vue.createApp({
 });
 App.mount('#Input__Container');
 
-/* Defines which Name value is attached to which field */
+/**
+ * This function defines which Name value is attached to which field of the wheel
+ * 
+ * @param {Array} _ListofParticipants 
+ */
 function SetUpRotationValues(_ListofParticipants){
   _ListofParticipants.forEach((participant,i )=> {
     if(i == 0)
@@ -86,7 +90,11 @@ function SetUpRotationValues(_ListofParticipants){
     }
   });
 }
-/*Sets the color of each field of the wheel*/
+
+/**
+ * This function Sets the color of each field of the wheel
+ * @param {Array} _ListofParticipants 
+ */
 function SetUpWheelColors(_ListofParticipants){
   /*If Number of participants dividable by 2 then give alternating colors */
   if(_ListofParticipants.length%2 ==0)
@@ -101,7 +109,7 @@ function SetUpWheelColors(_ListofParticipants){
       }
     });
   }
-  /*if not dividable by to give all fields the same color */
+  /*if not dividable by 2 give all fields the same color */
   else{
     _ListofParticipants.forEach(participant => {
       FieldColors.push("#8b35bc");
@@ -109,14 +117,20 @@ function SetUpWheelColors(_ListofParticipants){
   }
 }
 
-/*Sets the number of fields*/
+/**
+ * This function creates an Array with all the fields of the wheel
+ * @param {Array} _ListofParticipants 
+ */
 function SetUpWheelFields(_ListofParticipants){
   _ListofParticipants.forEach(participant => {
     Fields.push(FieldSize);
   });
 }
 
-/*Adjusts the font size of the Participant Names in the chart depending on the screen size */
+/**
+ * This function Adjusts the font size of the Participant Names in the chart depending on the screen size
+ * @returns {number}
+ */
 function getFontsize()
 {
   let fontsize = 0;
@@ -138,7 +152,9 @@ function getFontsize()
   return fontsize;
 }
 
-/*Creates the chart */
+/**
+ * This function Creates the chart for the Wheel
+ */
 function CreateChart(){
 
   /*Create chart*/
@@ -179,7 +195,10 @@ function CreateChart(){
 });
 }
 
-/*Creates the fields of the Wheel from the List of Participants */
+/**
+ * this function Creates the Wheel
+ * @param {Array} ListofParticipants 
+ */
 function CreateWheel(ListofParticipants){
   /*Calculate Size of one Piece of the Wheel */
   FieldSize = 360/ ListofParticipants.length;
@@ -189,15 +208,20 @@ function CreateWheel(ListofParticipants){
   CreateChart();
 }
 
-/*Hides the Input Section and shows the Wheel */
+/**
+ * This function hides the input section and creates and shows the wheel
+ * @param {Array} ListofParticipants 
+ */
 function PrepareGame(ListofParticipants){
-  document.body.style.backdropFilter="blur(5px)";
   CreateWheel(ListofParticipants);
   InputContainer.style.visibility="hidden";
   GameContainer.style.display="flex";
 }
  
-/*displays Name of the Selected Participant*/
+/**
+ * This function displays Name of the Selected Participant
+ * @param {number} angleValue 
+ */
 function DisplaySelectedParticipant (angleValue) {
   for (let i of rotationValues) {
     /*if the angleValue is between min and max then display the Name of the Winner*/
@@ -214,7 +238,9 @@ function DisplaySelectedParticipant (angleValue) {
   }
 }
 
-/*Spins the Wheel and selects the "Winner" */
+/**
+ * This function spins the wheel and selects the "Winner"
+ */
 function SpinWheel(){
   /*Hide Sad Face Image */
   SadFace.style.display="none";
@@ -252,6 +278,10 @@ function SpinWheel(){
      }
    }, 10);
 }
+
+/**
+ * This function Closes the Game Window
+ */
 function CloseWindow(){
   /*Hide Game Container */
   GameContainer.style.display="none";
@@ -264,6 +294,10 @@ function CloseWindow(){
   /*Reset Chart Values */
   ResetValues();
 }
+
+/**
+ * This function Resets all the Arrays
+ */
 function ResetValues(){
   Participants=[];
   rotationValues = [];
