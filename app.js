@@ -76,7 +76,7 @@ App.mount('#Input__Container');
 
 /* Defines which Name value is attached to which field */
 function SetUpRotationValues(_ListofParticipants){
-  for (let i = 0; i < _ListofParticipants.length; i++) {
+  _ListofParticipants.forEach((participant,i )=> {
     if(i == 0)
     {
       rotationValues.push( { minDegree: 1, maxDegree: FieldSize, value: _ListofParticipants[i] });
@@ -84,21 +84,22 @@ function SetUpRotationValues(_ListofParticipants){
     else{
       rotationValues.push( { minDegree: rotationValues[i-1].maxDegree +1, maxDegree:rotationValues[i-1].maxDegree + FieldSize, value: _ListofParticipants[i] });
     }
-  }
+  });
 }
 /*Sets the color of each field of the wheel*/
 function SetUpWheelColors(_ListofParticipants){
   /*If Number of participants dividable by 2 then give alternating colors */
-  if(_ListofParticipants.length%2 ==0){
-    for (let i = 0; i < _ListofParticipants.length; i++) {
-      if(i == 0 || i%2 ==0)
+  if(_ListofParticipants.length%2 ==0)
+  {
+    _ListofParticipants.forEach((participant, index) => {
+      if(index == 0 || index%2 ==0)
       {
         FieldColors.push("#8b35bc");
       }
       else{
         FieldColors.push("#b163da");
       }
-    }
+    });
   }
   /*if not dividable by to give all fields the same color */
   else{
@@ -110,9 +111,9 @@ function SetUpWheelColors(_ListofParticipants){
 
 /*Sets the number of fields*/
 function SetUpWheelFields(_ListofParticipants){
-  for (let i = 0; i < _ListofParticipants.length; i++) {
+  _ListofParticipants.forEach(participant => {
     Fields.push(FieldSize);
-  }
+  });
 }
 
 /*Adjusts the font size of the Participant Names in the chart depending on the screen size */
@@ -211,7 +212,7 @@ function DisplaySelectedParticipant (angleValue) {
       break;
     }
   }
-};
+}
 
 /*Spins the Wheel and selects the "Winner" */
 function SpinWheel(){
